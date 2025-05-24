@@ -1,11 +1,19 @@
 #!/bin/bash
-sleep 2
 
-cd /home/container
+sleep 5
 
-# Replace Startup Variables
-MODIFIED_STARTUP=`eval echo $(echo ${STARTUP} | sed -e 's/{{/${/g' -e 's/}}/}/g')`
+cd /home/container || {
+    echo "ERROR: Failed to change to /home/container directory"
+    exit 1
+}
+
+if [ -z "${STARTUP}" ]; then
+    echo "No startup command provided, defaulting to bash"
+    STARTUP="bash"
+fi
+
+MODIFIED_STARTUP=$(eval echo "$(echo "${STARTUP}" | sed -e 's/{{/${/g' -e 's/}}/}/g')")
+echo "Executing command: ${MODIFIED_STARTUP}"
 echo ":/home/container$ ${MODIFIED_STARTUP}"
 
-# Run the Server
-${MODIFIED_STARTUP}
+eval ${MODIFIED_STARTUP}
