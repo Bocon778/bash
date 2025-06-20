@@ -1,17 +1,14 @@
 FROM debian:bookworm-slim
 
+LABEL maintainer="Bocon <bocon@bloxbind.com>"
+
 RUN apt update \
     && apt upgrade -y \
-    && apt -y install curl software-properties-common locales git \
-    && apt-get -y install liblzma-dev \
-    && apt-get -y install lzma \
-    && adduser container \
-    && apt-get update \ 
+    && apt -y install curl wget unzip zip tar \
+    && apt -y install software-properties-common locales git \
+    && apt-get -y install liblzma-dev lzma \
     && apt -y install cmake \
-    && apt -y install wget \
-    && apt -y install unzip \
-    && apt -y install zip \
-    && apt -y install tar 
+    && adduser container
 
 RUN apt-get update && \
     apt-get -y install sudo   
@@ -60,26 +57,17 @@ RUN wget https://packages.microsoft.com/config/debian/11/packages-microsoft-prod
 
 RUN apt-get install -y \
     fonts-liberation \
-    gconf-service \
-    libappindicator1 \
-    libasound2 \
     libatk1.0-0 \
     libcairo2 \
-    libcups2 \
     libfontconfig1 \
     libgbm-dev \
     libgdk-pixbuf2.0-0 \
     libgtk-3-0 \
-    libicu-dev \
     libjpeg-dev \
-    libnspr4 \
     libnss3 \
     libpango-1.0-0 \
     libpangocairo-1.0-0 \
-    libpng-dev \
     libx11-6 \
-    libx11-xcb1 \
-    libxcb1 \
     libxcomposite1 \
     libxcursor1 \
     libxdamage1 \
@@ -89,8 +77,7 @@ RUN apt-get install -y \
     libxrandr2 \
     libxrender1 \
     libxss1 \
-    libxtst6 \
-    xdg-utils
+    libxtst6
 
 USER container
 ENV USER=container

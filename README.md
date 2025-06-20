@@ -23,3 +23,7 @@ This Docker image provides a comprehensive development environment with support 
 docker pull bocon778/bash
 docker run -it bocon778/bash
 ```
+
+### Credits
+Thank you to multiple creators in the hosting community for providing the inspiration for this project, especially:
+- [Darker-Ink/bash](https://github.com/Darker-Ink/bash/) - Provided significant foundation and inspiration for this Docker image.
