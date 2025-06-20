@@ -16,4 +16,4 @@ MODIFIED_STARTUP=$(eval echo "$(echo "${STARTUP}" | sed -e 's/{{/${/g' -e 's/}}/
 echo "Executing command: ${MODIFIED_STARTUP}"
 echo ":/home/container$ ${MODIFIED_STARTUP}"
 
-eval ${MODIFIED_STARTUP}
+eval "${MODIFIED_STARTUP}"
