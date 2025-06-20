@@ -20,7 +20,7 @@ jobs:
         uses: hadolint/hadolint-action@v3.1.0
 
       - name: ShellCheck entrypoint.sh
-        uses: ludeeus/action-shellcheck@v2
+        uses: ludeeus/action-shellcheck@master
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
