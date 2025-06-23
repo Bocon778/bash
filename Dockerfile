@@ -44,8 +44,9 @@ RUN apt update \
    && rm -rf Python-3.12.1 \
    && rm Python-3.12.*.tgz 
    
-RUN apt -y install python3 python3-pip \
-   && pip3 install --upgrade pip
+RUN apt -y install python3 python3-pip python3-venv \
+  && python3 -m venv /opt/venv \
+  && /opt/venv/bin/pip install --upgrade pip
 
 RUN wget https://packages.microsoft.com/config/debian/11/packages-microsoft-prod.deb -O packages-microsoft-prod.deb \
    && dpkg -i packages-microsoft-prod.deb \ 
