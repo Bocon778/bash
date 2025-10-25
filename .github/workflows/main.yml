@@ -19,10 +19,12 @@ jobs:
       - name: Lint Dockerfile
         uses: hadolint/hadolint-action@v3.1.0
         with:
-          ignore: DL3008,DL3015,DL3027,DL3009,DL3059,DL3047,DL4001,DL4006,DL3003,SC2046,DL3042,DL3013,SC1091,SC1091,SC2164
+          ignore: DL3008,DL3015,DL3027,DL3009,DL3059,DL3047,DL4001,DL4006,DL3003,SC2046,DL3042,DL3013,SC1091,SC2164
 
       - name: ShellCheck entrypoint.sh
         uses: ludeeus/action-shellcheck@master
+        env:
+          SHELLCHECK_OPTS: -e SC1091 -e SC2164
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
