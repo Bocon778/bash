@@ -31,6 +31,7 @@ RUN curl -sL https://deb.nodesource.com/setup_lts.x | bash - \
     && apt-get -y install nodejs imagemagick ffmpeg make build-essential 
 
 ENV NVM_DIR=/usr/local/nvm
+# shellcheck disable=SC1091
 RUN mkdir -p $NVM_DIR \
     && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash \
     && . "$NVM_DIR/nvm.sh" \
