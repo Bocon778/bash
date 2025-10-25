@@ -1,14 +1,17 @@
 #!/bin/bash
 
-sleep 5
+export NVM_DIR="/usr/local/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
-cd /home/container || {
-    echo "ERROR: Failed to change to /home/container directory"
-    exit 1
-}
+if [ -n "$NODE_VERSION" ]; then
+    nvm use "$NODE_VERSION"
+else
+    nvm use default
+fi
+
+cd /home/container
 
 if [ -z "${STARTUP}" ]; then
-    echo "No startup command provided, defaulting to bash"
     STARTUP="bash"
 fi
 
